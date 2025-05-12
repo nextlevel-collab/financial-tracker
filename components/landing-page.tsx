@@ -52,7 +52,7 @@ export function LandingPage() {
                       Login
                     </Button>
                   </Link>
-                  <Link href="/demo">
+                  <Link href="/dashboard?demo=true">
                     <Button size="lg" variant="secondary" className="w-full">
                       Try Demo
                     </Button>
