@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 100 25% 98%; /* Much softer green, almost white */
+    --foreground: 120 5% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 120 5% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 120 5% 15%;
+
+    --primary: 122 39% 49%; /* #4CAF50 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 120 25% 74%; /* #A5D6A7 */
+    --secondary-foreground: 120 5% 15%;
+
+    --muted: 100 25% 95%;
+    --muted-foreground: 120 5% 45%;
+
+    --accent: 120 33% 74%; /* #A5D6A7 */
+    --accent-foreground: 120 5% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 100 25% 90%;
+    --input: 100 25% 90%;
+    --ring: 122 39% 49%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 100 25% 98%;
+    --sidebar-foreground: 120 5% 15%;
+    --sidebar-primary: 122 39% 49%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 120 33% 74%;
+    --sidebar-accent-foreground: 120 5% 15%;
+    --sidebar-border: 100 25% 90%;
+    --sidebar-ring: 122 39% 49%;
+  }
+
+  .dark {
+    --background: 120 5% 10%;
+    --foreground: 100 25% 98%;
+
+    --card: 120 5% 15%;
+    --card-foreground: 100 25% 98%;
+
+    --popover: 120 5% 15%;
+    --popover-foreground: 100 25% 98%;
+
+    --primary: 122 39% 49%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 120 5% 25%;
+    --secondary-foreground: 100 25% 98%;
+
+    --muted: 120 5% 20%;
+    --muted-foreground: 120 5% 65%;
+
+    --accent: 120 5% 25%;
+    --accent-foreground: 100 25% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 120 5% 25%;
+    --input: 120 5% 25%;
+    --ring: 122 39% 49%;
+
+    --sidebar-background: 120 5% 10%;
+    --sidebar-foreground: 100 25% 98%;
+    --sidebar-primary: 122 39% 49%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 120 5% 25%;
+    --sidebar-accent-foreground: 100 25% 98%;
+    --sidebar-border: 120 5% 25%;
+    --sidebar-ring: 122 39% 49%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom styles for progress bars */
+.progress-bar-green::-webkit-progress-value {
+  background-color: #4caf50;
+}
+.progress-bar-green::-moz-progress-bar {
+  background-color: #4caf50;
+}
