@@ -17,7 +17,11 @@ export function middleware(request: NextRequest) {
   }
 
   const userId = request.cookies.get("userId")?.value
-  const demoMode = request.cookies.get("demoMode")?.value === "true" || request.headers.get("x-demo-mode") === "true"
+  const demoMode =
+  request.cookies.get("demoMode")?.value === "true" ||
+  request.headers.get("x-demo-mode") === "true" ||
+  request.nextUrl.searchParams.get("demo") === "true"
+
 
   // If trying to access protected route without being logged in and not in demo mode
   if (!userId && !demoMode) {
