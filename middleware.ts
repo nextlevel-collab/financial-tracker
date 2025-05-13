@@ -16,6 +16,10 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
+
+// Added this comment to bust Vercel cache
+
+
   const userId = request.cookies.get("userId")?.value
   const demoMode =
   request.cookies.get("demoMode")?.value === "true" ||
