@@ -3,6 +3,7 @@ import type { NextRequest } from "next/server"
 
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname
+  console.log("🔍 Middleware running - Path:", path)
 
   // Define protected routes
   const isProtectedRoute =
