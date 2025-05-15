@@ -16,10 +16,13 @@ export function middleware(request: NextRequest) {
   }
 
   const userId = request.cookies.get("userId")?.value
-  const demoMode =
+
+
+  const demoMode = 
+    request.nextUrl.searchParams.get("demo")?.toLowerCase() === "true" ||
     request.cookies.get("demoMode")?.value === "true" ||
-    request.headers.get("x-demo-mode") === "true" ||
-    request.nextUrl.searchParams.get("demo") === "true"
+    request.headers.get("x-demo-mode") === "true"
+	
 
   if (!userId && !demoMode) {
     return NextResponse.redirect(new URL("/login", request.url))
