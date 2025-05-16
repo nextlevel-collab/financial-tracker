@@ -25,12 +25,14 @@ export function DemoProvider({ children }: { children: React.ReactNode }) {
 
   const enableDemoMode = () => {
     localStorage.setItem("demoMode", "true")
+    document.cookie = "demoMode=true; path=/"
     setIsDemoMode(true)
     router.push("/dashboard")
   }
 
   const disableDemoMode = () => {
     localStorage.removeItem("demoMode")
+    document.cookie = "demoMode=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"
     setIsDemoMode(false)
     router.push("/")
   }
