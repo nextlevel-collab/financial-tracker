@@ -15,15 +15,27 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
+  const demoQueryParam = request.nextUrl.searchParams.get("demo")
+  const isDemoQuery = demoQueryParam?.toLowerCase() === "true"
+  const demoCookie = request.cookies.get("demoMode")?.value === "true"
+  const demoHeader = request.headers.get("x-demo-mode") === "true"
+
+  const demoMode = isDemoQuery || demoCookie || demoHeader
+
   const userId = request.cookies.get("userId")?.value
 
-
-  const demoMode = 
-    request.nextUrl.searchParams.get("demo")?.toLowerCase() === "true" ||
-    request.cookies.get("demoMode")?.value === "true" ||
-    request.headers.get("x-demo-mode") === "true"
+  // If ?demo=true is used, set a cookie so demo mode persists
+  if (isDemoQuery && !demoCookie) {
+    const response = NextResponse.next()
+    response.cookies.set("demoMode", "true", {
+      httpOnly: true,
+      path: "/",
+      maxAge: 60 * 60 * 24 * 7, // 1 week
+    })
+    return response
+  }
 	
-
+  // If no userId and not in demo mode, redirect to login
   if (!userId && !demoMode) {
     return NextResponse.redirect(new URL("/login", request.url))
   }

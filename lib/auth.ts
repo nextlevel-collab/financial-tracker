@@ -49,6 +49,12 @@ export function setUserSession(userId: number) {
 export async function getUserSession() {
   const cookieStore = await cookies();
   const userId = cookieStore.get("userId")?.value;
+
+  // If demo mode is active, return a static demo user ID
+  if (cookieStore.get("demo")?.value === "true") {
+    return 9999 // Static demo user ID
+  }
+
   return userId ? Number.parseInt(userId) : null;
 }
 
