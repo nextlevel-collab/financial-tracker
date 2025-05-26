@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true, // 👈 This tells Next.js you're using the App Router
-  },
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -11,6 +8,17 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
+  },
+  experimental: {
+    appDir: true, // Ensures the app directory is recognized
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/(.*)",
+        destination: "/",
+      },
+    ];
   },
 }
 
