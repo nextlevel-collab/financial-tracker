@@ -46,10 +46,12 @@ export function setUserSession(userId: number) {
   })
 }
 
-export function getUserSession() {
-  const userId = cookies().get("userId")?.value
-  return userId ? Number.parseInt(userId) : null
+export async function getUserSession() {
+  const cookieStore = await cookies();
+  const userId = cookieStore.get("userId")?.value;
+  return userId ? Number.parseInt(userId) : null;
 }
+
 
 export function clearUserSession() {
   cookies().delete("userId")

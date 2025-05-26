@@ -15,7 +15,7 @@ export default async function DashboardLayout({
   children: React.ReactNode
 }) {
   // In a real app, get the user from the session
-  const userId = getUserSession()
+  const userId = await getUserSession()
 
   // For demo purposes, we'll just use a placeholder user
   const user = {
